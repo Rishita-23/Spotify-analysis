@@ -71,25 +71,50 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 ### Easy Level
 1. Retrieve the names of all tracks that have more than 1 billion streams.
 2. List all albums along with their respective artists.
-'''sql
+```sql
 select
 distinct album, artist
 from spotify
 order by 1;
-'''
-4. Get the total number of comments for tracks where `licensed = TRUE`.
-5. Find all tracks that belong to the album type `single`.
-6. Count the total number of tracks by each artist.
+```
+3. Get the total number of comments for tracks where `licensed = TRUE`.
+4. Find all tracks that belong to the album type `single`.
+5. Count the total number of tracks by each artist.
+```sql
+select 
+	artist, count(*) as total_songs
+from spotify
+group by artist
+order by 1 desc;
+```
 
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
 2. Find the top 5 tracks with the highest energy values.
 3. List all tracks along with their views and likes where `official_video = TRUE`.
+```sql
+select 
+	track, 
+	sum(views) as total_views,
+	sum(likes) as total_likes
+from spotify
+where official_video = 'true'
+group by 1;
+```
 4. For each album, calculate the total views of all associated tracks.
 
 ### Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
 2. Write a query to find tracks where the liveness score is above the average.
+```sql
+select 
+	track, 
+	artist,
+	liveness
+from spotify
+where liveness > (select avg(liveness) from spotify);
+--select avg(liveness) from spotify -- 0.19
+```
 
 
 Here’s an updated section for your **Spotify Advanced SQL Project and Query Optimization** README, focusing on the query optimization task you performed. You can include the specific screenshots and graphs as described.
