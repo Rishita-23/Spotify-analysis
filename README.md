@@ -143,13 +143,13 @@ A graph visualizing execution and planning time before and after indexing shows 
 
 🧠 Concepts Covered:
 
-DDL, DML
+• DDL, DML
 
-Aggregations & Joins
+• Aggregations & Joins
 
-Subqueries & Window Functions
+• Subqueries & Window Functions
 
-Query Optimization & Indexing
+• Query Optimization & Indexing
 
 EXPLAIN ANALYZE
 
