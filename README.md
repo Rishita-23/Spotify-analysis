@@ -1,23 +1,33 @@
 🎧 Spotify Advanced SQL Project and Query Optimization
 📌 Project Category: Advanced SQL Practice
-[Click Here to get Dataset](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)
-
+Dataset: Click here to access the dataset
 
 📄 Overview
 This project involves analyzing a Spotify dataset containing various attributes of tracks, albums, and artists using PostgreSQL. It walks through an end-to-end process of:
 
 ✅ Normalizing a denormalized dataset
+
 ✅ Writing SQL queries ranging from easy to advanced
+
 ✅ Optimizing query performance using techniques like indexing and query planning
+
+The core aim is to strengthen advanced SQL skills and uncover meaningful insights from music data.
 
 🗃️ Dataset Description
 The dataset includes fields such as:
+
 🎤 artist: Performer of the track
+
 🎵 track: Name of the song
+
 💿 album: Album to which the track belongs
+
 🧾 album_type: Album category (e.g., single, album)
+
 📈 Streaming metrics like views, likes, comments, streams
+
 🎶 Audio features like danceability, energy, tempo, valence
+
 📊 Additional metadata for analysis
 
 🛠️ Table Creation (DDL)
