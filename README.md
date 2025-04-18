@@ -1,38 +1,39 @@
-🎧 Spotify Advanced SQL Project and Query Optimization
-📌 Project Category: Advanced SQL Practice
-Dataset: Click here to access the dataset
+# 🎧 Spotify Advanced SQL Project and Query Optimization
 
-📄 Overview
-This project involves analyzing a Spotify dataset containing various attributes of tracks, albums, and artists using PostgreSQL. It walks through an end-to-end process of:
+📌 **Project Category:** Advanced SQL Practice  
+🗂️ **Dataset:** [Click here to access the dataset](#) *(replace with actual link)*
 
-✅ Normalizing a denormalized dataset
+---
 
-✅ Writing SQL queries ranging from easy to advanced
+## 📄 Overview
 
+This project analyzes a Spotify dataset containing various attributes of tracks, albums, and artists using **PostgreSQL**. It guides you through:
+
+✅ Normalizing a denormalized dataset  
+✅ Writing SQL queries ranging from easy to advanced  
 ✅ Optimizing query performance using techniques like indexing and query planning
 
-The core aim is to strengthen advanced SQL skills and uncover meaningful insights from music data.
+🎯 The main goal is to practice advanced SQL skills and extract insightful analytics from Spotify music data.
 
-🗃️ Dataset Description
-The dataset includes fields such as:
+---
 
-🎤 artist: Performer of the track
+## 🗃️ Dataset Description
 
-🎵 track: Name of the song
+The dataset includes the following attributes:
 
-💿 album: Album to which the track belongs
+- 🎤 `artist`: Performer of the track  
+- 🎵 `track`: Name of the song  
+- 💿 `album`: Album to which the track belongs  
+- 🧾 `album_type`: Album category (e.g., single, album)  
+- 🎚️ Audio metrics: `danceability`, `energy`, `loudness`, `tempo`, `valence`, etc.  
+- 📈 Streaming stats: `views`, `likes`, `comments`, `streams`  
+- 🔖 Metadata: `official_video`, `licensed`, `channel`, etc.
 
-🧾 album_type: Album category (e.g., single, album)
+---
 
-📈 Streaming metrics like views, likes, comments, streams
+## 🛠️ Table Creation (DDL)
 
-🎶 Audio features like danceability, energy, tempo, valence
-
-📊 Additional metadata for analysis
-
-🛠️ Table Creation (DDL)
 ```sql
--- create table
 DROP TABLE IF EXISTS spotify;
 CREATE TABLE spotify (
     artist VARCHAR(255),
@@ -61,77 +62,102 @@ CREATE TABLE spotify (
     most_played_on VARCHAR(50)
 );
 ```
-## Project Steps
 
-🚀 Query Optimization
-In advanced stages, the focus shifts to improving query performance. Some optimization strategies include:
-- **Indexing**: Adding indexes on frequently queried columns.
-- **Query Execution Plan**: Using `EXPLAIN ANALYZE` to review and refine query performance.
-  
----
-
-## 15 Practice Questions
-
+🔎 Practice Questions
 🟢 Easy Level
 1. Retrieve the names of all tracks that have more than 1 billion streams.
-2. List all albums along with their respective artists.
+2. List all albums along with their respective artists
+
 ```sql
-select
-distinct album, artist
-from spotify
-order by 1;
+SELECT DISTINCT album, artist
+FROM spotify
+ORDER BY 1;
 ```
-3. Get the total number of comments for tracks where `licensed = TRUE`.
-4. Find all tracks that belong to the album type `single`.
+3. Get the total number of comments for tracks where licensed = TRUE.
+4. Find all tracks that belong to the album type single.
 5. Count the total number of tracks by each artist.
+
 ```sql
-select 
-	artist, count(*) as total_songs
-from spotify
-group by artist
-order by 1 desc;
+SELECT 
+    artist, 
+    COUNT(*) AS total_songs
+FROM spotify
+GROUP BY artist
+ORDER BY 1 DESC;
 ```
 
 🟡 Medium Level
 1. Calculate the average danceability of tracks in each album.
 2. Find the top 5 tracks with the highest energy values.
-3. List all tracks along with their views and likes where `official_video = TRUE`.
+3. List all tracks along with their views and likes where official_video = TRUE.
 ```sql
-select 
-	track, 
-	sum(views) as total_views,
-	sum(likes) as total_likes
-from spotify
-where official_video = 'true'
-group by 1;
+SELECT 
+    track, 
+    SUM(views) AS total_views,
+    SUM(likes) AS total_likes
+FROM spotify
+WHERE official_video = TRUE
+GROUP BY track;
 ```
 4. For each album, calculate the total views of all associated tracks.
 
-🔴 Advanced Level
+   🔴 Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
-2. Write a query to find tracks where the liveness score is above the average.
+2. Find tracks where the liveness score is above average
 ```sql
-select 
-	track, 
-	artist,
-	liveness
-from spotify
-where liveness > (select avg(liveness) from spotify);
---select avg(liveness) from spotify -- 0.19
+SELECT 
+    track, 
+    artist,
+    liveness
+FROM spotify
+WHERE liveness > (SELECT AVG(liveness) FROM spotify);
+-- SELECT AVG(liveness) FROM spotify; -- returns ~0.19
 ```
+
+🚀 Query Optimization
+✅ Step-by-step Process
+EXPLAIN ANALYZE Before Indexing
+
+Query on artist column
+Execution Time: 7 ms, Planning Time: 0.17 ms
+
+Index Creation
+
+```sql
+Copy code
+CREATE INDEX idx_artist ON spotify(artist);
+```
+EXPLAIN ANALYZE After Indexing
+
+Execution Time: 0.153 ms, Planning Time: 0.152 ms
+
+📊 Graphical Performance Comparison
+A graph visualizing execution and planning time before and after indexing shows a drastic improvement in performance.
+
 🧰 Tech Stack & Tools
-🛢️ PostgreSQL for database and query execution
-🖥️ pgAdmin 4 or any SQL IDE for querying
-💻 EXPLAIN ANALYZE for performance analysis
-📦 SQL Concepts: DDL, DML, Joins, Subqueries, Window Functions, Indexes
+🛢️ Database: PostgreSQL
+
+💻 Tools: pgAdmin 4 / DBeaver / Any SQL IDE
+
+🧠 Concepts Covered:
+
+DDL, DML
+
+Aggregations & Joins
+
+Subqueries & Window Functions
+
+Query Optimization & Indexing
+
+EXPLAIN ANALYZE
 
 🎯 Next Steps
-📊 Visualization: Build dashboards with BI tools
-🧩 Scalability: Expand dataset for stress testing
-🧠 Deep Dive: Explore indexing, query rewriting, partitioning
----
+📊 Visualization: Create dashboards in Power BI / Tableau
+
+🧩 Scalability: Expand dataset and perform stress testing
+
+🧠 Advanced Optimization: Explore query rewriting, indexing, and partitioning
 
 🤝 Contributing
-Feel free to fork, raise issues, or open pull requests to collaborate. Let's learn and grow together! 🌱
----
-
+If you'd like to contribute:Feel free to fork, raise issues, or open pull requests to collaborate. Let's learn and grow together! 🌱
+Let's learn and grow together! 🌱
