@@ -1,7 +1,7 @@
 # 🎧 Spotify Advanced SQL Project and Query Optimization
 
 📌 **Project Category:** Advanced SQL Practice  
-🗂️ **Dataset:** [Click here to access the dataset](#) *(https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset)*
+🗂️ **Dataset:** [Click here to access the dataset](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset) 
 
 ---
 
