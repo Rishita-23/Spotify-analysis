@@ -155,7 +155,7 @@ EXPLAIN ANALYZE
 
 ---
 
-##🎯 Next Steps
+## 🎯 Next Steps
 📊 Visualization: Create dashboards in Power BI / Tableau
 
 🧩 Scalability: Expand dataset and perform stress testing
@@ -164,6 +164,6 @@ EXPLAIN ANALYZE
 
 ---
 
-##🤝 Contributing
+## 🤝 Contributing
 If you'd like to contribute:Feel free to fork, raise issues, or open pull requests to collaborate. Let's learn and grow together! 🌱
 Let's learn and grow together! 🌱
