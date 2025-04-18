@@ -114,7 +114,7 @@ WHERE liveness > (SELECT AVG(liveness) FROM spotify);
 -- SELECT AVG(liveness) FROM spotify; -- returns ~0.19
 ```
 
-🚀 Query Optimization
+##🚀 Query Optimization
 ✅ Step-by-step Process
 EXPLAIN ANALYZE Before Indexing
 
@@ -134,7 +134,9 @@ Execution Time: 0.153 ms, Planning Time: 0.152 ms
 📊 Graphical Performance Comparison
 A graph visualizing execution and planning time before and after indexing shows a drastic improvement in performance.
 
-🧰 Tech Stack & Tools
+---
+
+## 🧰 Tech Stack & Tools
 🛢️ Database: PostgreSQL
 
 💻 Tools: pgAdmin 4 / DBeaver / Any SQL IDE
@@ -151,13 +153,17 @@ Query Optimization & Indexing
 
 EXPLAIN ANALYZE
 
-🎯 Next Steps
+---
+
+##🎯 Next Steps
 📊 Visualization: Create dashboards in Power BI / Tableau
 
 🧩 Scalability: Expand dataset and perform stress testing
 
 🧠 Advanced Optimization: Explore query rewriting, indexing, and partitioning
 
-🤝 Contributing
+---
+
+##🤝 Contributing
 If you'd like to contribute:Feel free to fork, raise issues, or open pull requests to collaborate. Let's learn and grow together! 🌱
 Let's learn and grow together! 🌱
