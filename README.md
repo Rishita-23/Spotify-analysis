@@ -3,6 +3,8 @@
 📌 **Project Category:** Advanced SQL Practice  
 🗂️ **Dataset:** [Click here to access the dataset](https://www.kaggle.com/datasets/sanjanchaudhari/spotify-dataset) 
 
+![spotify logo](https://github.com/user-attachments/assets/4c9692be-4b60-438e-b430-2e15840eb6c4)
+
 ---
 
 ## 📄 Overview
