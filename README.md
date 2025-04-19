@@ -104,7 +104,7 @@ ORDER BY 1 DESC;
 
 🟡 Medium Level
 
-6.Calculate the average danceability of tracks in each album.
+6. Calculate the average danceability of tracks in each album.
 ```sql
 select 
 	album, avg(danceability) as avg_danceability
@@ -112,7 +112,7 @@ from spotify
 group by 1
 order by 2 desc;
 ```
-7.Find the top 5 tracks with the highest energy values.
+7. Find the top 5 tracks with the highest energy values.
 ```sql
 select 
 	track,
@@ -122,7 +122,7 @@ group by 1
 order by 2 desc
 limit 5;
 ```
-8.List all tracks along with their views and likes where official_video = TRUE.
+8. List all tracks along with their views and likes where official_video = TRUE.
 ```sql
 select 
 	track, 
@@ -132,7 +132,7 @@ from spotify
 where official_video = 'true'
 group by 1;	
 ```
-9.For each album, calculate the total views of all associated tracks.
+9. For each album, calculate the total views of all associated tracks.
 ```sql
 select 
 	album,
@@ -144,7 +144,7 @@ group by 1,2;
 
 🔴 Advanced Level
    
-10.Find the top 3 most-viewed tracks for each artist using window function
+10. Find the top 3 most-viewed tracks for each artist using window function
 ```sql
 -- each artist and total views for each track
 --track with highest view for each artist (we need top 3)
@@ -163,7 +163,7 @@ order by 1, 3 desc)
 select * from ranking_artist
 where rank<=3;
 ```
-11.Write a query to find tracks where the liveness score is above the average.
+11. Write a query to find tracks where the liveness score is above the average.
 ```sql
 select 
 	track, 
