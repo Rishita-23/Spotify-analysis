@@ -66,6 +66,12 @@ CREATE TABLE spotify (
 🔎 Practice Questions
 🟢 Easy Level
 1. Retrieve the names of all tracks that have more than 1 billion streams.
+``` sql
+select * from spotify;
+
+select * from spotify 
+where stream>1000000000;
+```
 2. List all albums along with their respective artists
 
 ```sql
@@ -74,7 +80,17 @@ FROM spotify
 ORDER BY 1;
 ```
 3. Get the total number of comments for tracks where licensed = TRUE.
+```sql
+select 
+	sum(comments) as total_comments
+from spotify
+where licensed = 'true';
+```
 4. Find all tracks that belong to the album type single.
+```sql
+select artist, track from spotify
+where album_type = 'single';
+```
 5. Count the total number of tracks by each artist.
 
 ```sql
@@ -87,31 +103,73 @@ ORDER BY 1 DESC;
 ```
 
 🟡 Medium Level
-1. Calculate the average danceability of tracks in each album.
-2. Find the top 5 tracks with the highest energy values.
-3. List all tracks along with their views and likes where official_video = TRUE.
+6.Calculate the average danceability of tracks in each album.
 ```sql
-SELECT 
-    track, 
-    SUM(views) AS total_views,
-    SUM(likes) AS total_likes
-FROM spotify
-WHERE official_video = TRUE
-GROUP BY track;
+select 
+	album, avg(danceability) as avg_danceability
+from spotify
+group by 1
+order by 2 desc;
 ```
-4. For each album, calculate the total views of all associated tracks.
+7.Find the top 5 tracks with the highest energy values.
+```sql
+select 
+	track,
+	max(energy)
+from spotify 
+group by 1
+order by 2 desc
+limit 5;
+```
+8.List all tracks along with their views and likes where official_video = TRUE.
+```sql
+select 
+	track, 
+	sum(views) as total_views,
+	sum(likes) as total_likes
+from spotify
+where official_video = 'true'
+group by 1;	
+```
+9.For each album, calculate the total views of all associated tracks.
+```sql
+select 
+	album,
+	track,
+	sum(views) as total_views
+from spotify
+group by 1,2;
+```
 
    🔴 Advanced Level
-1. Find the top 3 most-viewed tracks for each artist using window functions.
-2. Find tracks where the liveness score is above average
+10.Find the top 3 most-viewed tracks for each artist using window function
 ```sql
-SELECT 
-    track, 
-    artist,
-    liveness
-FROM spotify
-WHERE liveness > (SELECT AVG(liveness) FROM spotify);
--- SELECT AVG(liveness) FROM spotify; -- returns ~0.19
+-- each artist and total views for each track
+--track with highest view for each artist (we need top 3)
+--dense rank
+
+with ranking_artist
+as
+(select 
+	artist,
+	track,
+	sum(views) as total_view,
+	dense_rank() over(partition by artist order by sum(views)desc) as rank
+from spotify
+group by 1,2
+order by 1, 3 desc)
+select * from ranking_artist
+where rank<=3;
+```
+11.Write a query to find tracks where the liveness score is above the average.
+```sql
+select 
+	track, 
+	artist,
+	liveness
+from spotify
+where liveness > (select avg(liveness) from spotify);
+--select avg(liveness) from spotify -- 0.19
 ```
 
 ##🚀 Query Optimization
